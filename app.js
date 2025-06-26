@@ -6,7 +6,7 @@ import crypto from "crypto";
 import { readFile, writeFile } from "fs/promises"; // ✅ correct
 
 
-const PORT=3002;
+// const PORT=3002;
 const DATA_FILE=path.join("data","links.json");
 
 const serverFile=async(res,filePath,contentType)=>{
@@ -98,6 +98,12 @@ const server=createServer(async(req,res)=>{
         }
 });
 
-server.listen(PORT,()=>{
-    console.log(`Server running at http://localhost:${PORT}`);
+// server.listen(PORT,()=>{
+//     console.log(`Server running at http://localhost:${PORT}`);
+// });
+// ✅ Correct
+const PORT = process.env.PORT || 3002;
+
+server.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server running at http://0.0.0.0:${PORT}`);
 });
